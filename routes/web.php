@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CrudContoller;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/", [CrudContoller::class,"index"])->name("crud.index");
+//ruta para crea empleao
+
+Route::post("/agregar-empleado", [CrudContoller::class,"create"])->name("crud.create");
+
+//ruta para modificar
+Route::put("/editar-empleado", [CrudContoller::class,"update"])->name("crud.update");
+
+//ruta para modificar
+Route::get("/eliminar-empleado-{id}", [CrudContoller::class,"delete"])->name("crud.delete");
+
+
+
+
+
